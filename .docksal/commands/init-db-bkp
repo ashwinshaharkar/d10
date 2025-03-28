@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+## Test site installation
+##
+## Usage: fin init-db-bkp
+
+# Abort if anything fails
+set -e
+
+# Debug mode switch
+if [[ "${DEBUG}" != "" ]]; then
+    set -x
+fi
+
+echo "Taking Database Backup: Start"
+fin db dump --db=drupal10 --db-user=root --db-password=root drupal10.sql
+echo "Taking Database Backup: Ends"

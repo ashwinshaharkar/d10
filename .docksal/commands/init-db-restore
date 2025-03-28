@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+## Test site installation
+##
+## Usage: fin init-db-restore
+
+# Abort if anything fails
+set -e
+
+# Debug mode switch
+if [[ "${DEBUG}" != "" ]]; then
+    set -x
+fi
+
+echo "Dropping current default Database: Start"
+fin db drop drupal10
+echo "Dropping current default Database: End"
+echo "----------------------------------------"
+echo "Creating new blank default Database: Start"
+fin db create drupal10
+echo "Creating new blank default Database: End"
+echo "----------------------------------------"
+echo "Importing Database: Start"
+# fin db import drupal10.sql --no-truncate
+fin db import drupal10.sql --db=drupal10 --no-truncate
+echo "Importing Database: End"
+echo "----------------------------------------"

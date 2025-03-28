@@ -1,0 +1,10 @@
+services:
+  # Add your service overrides here.
+  # CLI service override.
+  cli:
+    # Extend the stock cli image (see .docksal/services/cli/Dockerfile)
+    image: ${COMPOSE_PROJECT_NAME_SAFE}/cli
+    build: services/cli
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
+
